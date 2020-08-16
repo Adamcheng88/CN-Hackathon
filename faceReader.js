@@ -32,7 +32,7 @@ async function face_api() {
 					"time" : new Date(),
 				};
 
-				fs.readFile('data.json', 'utf-8', (err, filedata) => {
+				fs.readFile('client/results.json', 'utf-8', (err, filedata) => {
 					if(err) throw err;
 					let objectArray = JSON.parse(filedata);
 
@@ -42,6 +42,11 @@ async function face_api() {
 						if(err) throw err;
 						console.log('Done!');
 					});
+				})
+
+				fs.copyFile('./img.jpg', 'client/img.jpg', (err) => {
+					if(err) console.error(err);
+					else console.log('Image copied successfully');
 				})
 			});
 		});
